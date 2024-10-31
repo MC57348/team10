@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experts' Guides</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --card-background: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: var(--primary-color);
+        }
+        .guide-section {
+            margin-bottom: 40px;
+        }
+        .guide-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .guide-item {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        .guide-item:hover {
+            transform: translateY(-5px);
+        }
+        .guide-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .guide-item a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .guide-item a:hover {
+            background-color: #357ae8;
+        }
+        .video-item {
+            display: flex;
+            align-items: center;
+        }
+        .video-thumbnail {
+            width: 120px;
+            height: 80px;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            border-radius: 8px;
+        }
+        .video-info {
+            flex: 1;
+        }
+        .expert-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-home:hover {
+            background-color: #e69100;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Experts' Guides</h1>
+
+        <div class="guide-section">
+            <h2>Popular Guides</h2>
+            <ul class="guide-list">
+                <li class="guide-item">
+                    <h3>How to Create a Personal Budget</h3>
+                    <p>Learn how to assess your income, track expenses, and set reasonable budget goals.</p>
+                    <a href="#">Read Full Article</a>
+                </li>
+                <li class="guide-item">
+                    <h3>Investing 101: Getting Started</h3>
+                    <p>Understand basic investment concepts, risk management, and asset allocation strategies.</p>
+                    <a href="#">Read Full Article</a>
+                </li>
+                <li class="guide-item">
+                    <h3>Tax-Saving Tips: Legally Optimize Your Taxes</h3>
+                    <p>Explore legal tax planning methods to maximize your after-tax returns.</p>
+                    <a href="#">Read Full Article</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="guide-section">
+            <h2>Video Tutorials</h2>
+            <ul class="guide-list">
+                <li class="guide-item video-item">
+                    <div class="video-thumbnail">Video</div>
+                    <div class="video-info">
+                        <h3>Understanding Credit Scores</h3>
+                        <p>Video Duration: 15 minutes</p>
+                        <a href="#">Watch Video</a>
+                    </div>
+                </li>
+                <li class="guide-item video-item">
+                    <div class="video-thumbnail">Video</div>
+                    <div class="video-info">
+                        <h3>How to Choose the Right Insurance</h3>
+                        <p>Video Duration: 20 minutes</p>
+                        <a href="#">Watch Video</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="guide-section">
+            <h2>Expert Q&A</h2>
+            <ul class="guide-list">
+                <li class="guide-item">
+                    <div style="display: flex; align-items: center;">
+                        <div class="expert-avatar">JD</div>
+                        <div>
+                            <h3>How do I start planning for retirement?</h3>
+                            <p>Answered by: John Doe, Certified Financial Planner</p>
+                        </div>
+                    </div>
+                    <a href="#">View Answer</a>
+                </li>
+                <li class="guide-item">
+                    <div style="display: flex; align-items: center;">
+                        <div class="expert-avatar">JS</div>
+                        <div>
+                            <h3>Buying vs. Renting: Which is more suitable?</h3>
+                            <p>Answered by: Jane Smith, Real Estate Analyst</p>
+                        </div>
+                    </div>
+                    <a href="#">View Answer</a>
+                </li>
+            </ul>
+        </div>
+
+        <a href="mainpage.html" class="back-home">Back to Home</a>
+    </div>
+</body>
+</html>

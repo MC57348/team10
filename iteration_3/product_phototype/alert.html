@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Settings</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --card-background: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: var(--primary-color);
+        }
+        .alert-section {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        form {
+            display: grid;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #357ae8;
+        }
+        .alert-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .alert-item {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .alert-item button {
+            width: auto;
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-home:hover {
+            background-color: #e69100;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Alert Settings</h1>
+
+        <div class="alert-section">
+            <h2>Create New Alert</h2>
+            <form>
+                <label for="alert-type">Alert Type:</label>
+                <select id="alert-type" name="alert-type">
+                    <option value="budget">Budget Overspending</option>
+                    <option value="recurring">Recurring Payment</option>
+                    <option value="unusual">Unusual Transaction</option>
+                </select>
+
+                <label for="alert-threshold">Threshold ($):</label>
+                <input type="number" id="alert-threshold" name="alert-threshold">
+
+                <label for="alert-frequency">Frequency:</label>
+                <select id="alert-frequency" name="alert-frequency">
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+
+                <button type="submit">Create Alert</button>
+            </form>
+        </div>
+
+        <div class="alert-section">
+            <h2>Current Alerts</h2>
+            <ul class="alert-list">
+                <li class="alert-item">
+                    <span><strong>Budget Overspending Alert</strong> - When monthly expenses exceed $5000</span>
+                    <div>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </li>
+                <li class="alert-item">
+                    <span><strong>Recurring Payment Alert</strong> - Reminder to pay rent on the 1st of each month</span>
+                    <div>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </li>
+                <li class="alert-item">
+                    <span><strong>Unusual Transaction Alert</strong> - When a single transaction exceeds $1000</span>
+                    <div>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <a href="mainpage.html" class="back-home">Back to Home</a>
+    </div>
+</body>
+</html>

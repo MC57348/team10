@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Management Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --background-color: #ecf0f1;
+      --text-color: #2c3e50;
+      --accent-color: #e74c3c;
+    }
+    
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+    }
+    
+    .content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .pie-chart-container, .details {
+      flex: 1;
+      margin: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    
+    .menu-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: var(--primary-color);
+        z-index: 1000;
+        transition: width 0.3s ease;
+        width: 50px;
+        overflow: hidden;
+    }
+
+    #menu-toggle {
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #menu {
+        padding-top: 20px;
+    }
+
+    #menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #menu ul li {
+        padding: 10px 20px;
+    }
+
+    #menu ul li a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        white-space: nowrap;
+    }
+
+    .menu-hidden {
+        display: none;
+    }
+
+    .menu-expanded {
+        width: 200px;
+    }
+
+    .content {
+        margin-left: 50px;
+        transition: margin-left 0.3s ease;
+    }
+
+    .content-shifted {
+        margin-left: 200px;
+    }
+    
+    .details-list li {
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .details-list li:hover {
+      background-color: var(--background-color);
+      transform: translateX(5px);
+    }
+    
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+      }
+      
+      .pie-chart-container, .details {
+        width: 100%;
+      }
+    }
+
+.bottom-section {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-left: 50px;
+    transition: margin-left 0.3s ease;
+}
+
+.bottom-section-shifted {
+    margin-left: 200px;
+}
+
+.card {
+  flex: 1;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  max-width: calc(33.33% - 14px);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  height: 120px;
+  object-fit: cover;
+}
+
+.card h3 {
+  padding: 15px 20px 0;
+  margin: 0;
+  font-size: 18px;
+  color: var(--primary-color);
+}
+
+.card p {
+  padding: 10px 20px 20px;
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.bottom-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.bottom-button:hover {
+  background-color: #45a049;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.bottom-button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transform: translateY(1px);
+}
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuContainer = document.querySelector('.menu-container');
+      const menu = document.getElementById('menu');
+      const content = document.querySelector('.content');
+      const botton = document.querySelector('.bottom-section');
+    
+      menuToggle.addEventListener('click', function() {
+        menuContainer.classList.toggle('menu-expanded');
+        menu.classList.toggle('menu-hidden');
+        content.classList.toggle('content-shifted');
+        botton.classList.toggle('bottom-section-shifted');
+      });
+    });
+</script>
+
+<body>
+    <!-- Sidebar menu button -->
+    <div class="menu-container">
+        <div id="menu-toggle">≡</div>
+        <nav id="menu" class="menu-hidden">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="report.html">Reporting</a></li>
+            <li><a href="alert.html">Alerts</a></li>
+            <li><a href="guides.html">Guides</a></li>
+            <li><a href="perdetail.html">Personal Details</a></li>
+            <li><a href="login.html" class="auth-link">Login</a></li>
+            <li><a href="register.html" class="auth-link">Register</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+
+    <!-- Pie Chart and Details Section -->
+    <div class="content">
+        <div class="pie-chart-container">
+            <svg id="pie-chart" width="250" height="250"></svg>
+        </div>
+
+        <div class="details" id="details">
+            <h2>Details</h2>
+            <ul id="details-list">
+                <!-- 固定数据将通过 JavaScript 插入 -->
+            </ul>
+            <!-- 添加 Upload 按钮 -->
+            <button id="upload-button" class="bottom-button">Upload New Expense</button>
+        </div>
+    </div>
+
+    <!-- Bottom Buttons -->
+    <div class="bottom-section">
+        <div class="card">
+            <a href="report.html">
+                <img src="Reporting-image.webp" alt="Reporting">
+                <h3>Reporting</h3>
+                <p>Access and manage your financial reports</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="alert.html">
+                <img src="Alert-image.webp" alt="Alert">
+                <h3>Alert</h3>
+                <p>Stay informed with real-time notifications</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="guides.html">
+                <img src="guides-image.webp" alt="Experts' Guides">
+                <h3>Experts' Guides</h3>
+                <p>Learn from financial experts' insights</p>
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Reports</title>
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #f5a623;
+            --background-color: #f9f9f9;
+            --text-color: #333;
+            --card-background: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: var(--primary-color);
+        }
+        .report-section {
+            background-color: var(--card-background);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .chart-placeholder {
+            background-color: #e9ecef;
+            height: 300px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #6c757d;
+        }
+        .expense-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .expense-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .expense-item:last-child {
+            border-bottom: none;
+        }
+        form {
+            display: grid;
+            gap: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="date"], button {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #357ae8;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-home:hover {
+            background-color: #e69100;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Financial Reports</h1>
+
+        <div class="report-section">
+            <h2>Expense Overview</h2>
+            <div class="chart-placeholder">Expense Pie Chart Here</div>
+            <p><strong>Total Expenses:</strong> $XXXX.XX</p>
+        </div>
+
+        <div class="report-section">
+            <h2>Monthly Trends</h2>
+            <div class="chart-placeholder">Monthly Expense Line Graph Here</div>
+        </div>
+
+        <div class="report-section">
+            <h2>Top 5 Expense Categories</h2>
+            <ul class="expense-list">
+                <li class="expense-item"><span>Category 1</span> <span>$XXX.XX</span></li>
+                <li class="expense-item"><span>Category 2</span> <span>$XXX.XX</span></li>
+                <li class="expense-item"><span>Category 3</span> <span>$XXX.XX</span></li>
+                <li class="expense-item"><span>Category 4</span> <span>$XXX.XX</span></li>
+                <li class="expense-item"><span>Category 5</span> <span>$XXX.XX</span></li>
+            </ul>
+        </div>
+
+        <div class="report-section">
+            <h2>Generate Custom Report</h2>
+            <form>
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date">
+                <button type="submit">Generate Report</button>
+            </form>
+        </div>
+
+        <a href="mainpage.html" class="back-home">Back to Home</a>
+    </div>
+</body>
+</html>

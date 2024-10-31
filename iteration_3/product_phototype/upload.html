@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Expense</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2ecc71;
+      --background-color: #ecf0f1;
+      --text-color: #2c3e50;
+      --accent-color: #e74c3c;
+    }
+    
+    body {
+      font-family: 'Roboto', Arial, sans-serif;
+      color: var(--text-color);
+      line-height: 1.6;
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary-color);
+    }
+    
+    .upload-containers {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+    }
+    
+    .form-container {
+      position: relative;
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .upload-containers .form-container {
+      flex: 1;
+      margin: 0;
+    }
+    
+    .form-container input,
+    .form-container select,
+    .form-container button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    
+    .form-container button {
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .form-container button:hover {
+      background-color: #2980b9;
+    }
+    
+    .form-container label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    
+    .form-container input[type="date"] {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    
+    .file-info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+    }
+    
+    .back-home {
+      display: block;
+      width: fit-content;
+      margin: 20px auto;
+      padding: 10px 15px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background-color 0.3s;
+    }
+    
+    .back-home:hover {
+      background-color: #2980b9;
+    }
+    
+    @media (max-width: 768px) {
+      .upload-containers {
+        flex-direction: column;
+      }
+      
+      .upload-containers .form-container {
+        max-width: 300px;
+        margin: 20px auto;
+      }
+    }
+    </style>
+<body>
+    <div class="form-container">
+        <h2>Upload New Expense</h2>
+        <form id="upload-form">
+            <label for="expense-type">Expense Type:</label>
+            <select id="expense-type" name="expense-type" required>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Rent">Rent</option>
+                <option value="Diet">Diet</option>
+                <option value="Other fees">Other Fees</option>
+            </select>
+
+            <label for="expense-name">Expense Name:</label>
+            <input type="text" id="expense-name" name="expense-name" required>
+
+            <label for="expense-amount">Amount ($):</label>
+            <input type="number" id="expense-amount" name="expense-amount" required>
+
+            <label for="expense-date">Date:</label>
+            <input type="date" id="expense-date" name="expense-date" required>
+
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    
+    <div class="form-container">
+        <h2>Upload Expense File</h2>
+        <form id="file-upload-form">
+            <label for="expenseFile">Select File：</label>
+            <input type="file" id="expenseFile" name="expenseFile" accept=".csv, .xlsx, .xls" required>
+            <button type="submit">Upload File</button>
+        </form>
+        <p class="file-info">File Support：CSV, Excel (.xlsx, .xls)</p>
+    </div>
+
+    <a href="mainpage.html" class="back-home">back to home page</a>
+
+    <script>
+        document.getElementById('upload-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // 获取表单数据
+            const type = document.getElementById('expense-type').value;
+            const name = document.getElementById('expense-name').value;
+            const amount = parseFloat(document.getElementById('expense-amount').value);
+            const date = document.getElementById('expense-date').value;
+
+            // 这里我们仍然存储数据到 localStorage（未来可以切换到动态数据）
+            const expenses = JSON.parse(localStorage.getItem('expenses')) || {};
+            if (!expenses[type]) {
+                expenses[type] = [];
+            }
+            expenses[type].push({ name, amount, date });
+
+            localStorage.setItem('expenses', JSON.stringify(expenses));
+            window.location.href = 'MVP.html';  // 返回主页
+        });
+    </script>
+</body>
+</html>
